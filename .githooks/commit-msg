@@ -1,0 +1,11 @@
+#!/bin/sh
+MSG_FILE=$1
+PATTERN='^(feat|fix|docs|style|refactor|perf|test|chore|ci|build)(\([a-z0-9-]+\))?: .{1,50}$'
+
+if ! grep -qE "$PATTERN" "$MSG_FILE"; then
+  echo "❌ Commit inválido: usa Conventional Commits."
+  echo "Ejemplo válido: feat(login): agregar validación de email"
+  exit 1
+fi
+
+
